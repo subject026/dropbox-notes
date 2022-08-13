@@ -1,4 +1,5 @@
-import { Component, createSignal } from "solid-js";
+import { Component, createMemo, createSignal } from "solid-js";
+import { useLocation } from "@solidjs/router";
 import MarkdownIt from "markdown-it";
 
 import Layout from "../components/Layout";
@@ -58,7 +59,16 @@ ebrius; et procul lacum modo colonus Pallene in ferox utraque. Bina Surgit
 qualia per parte intrarit ut [habet de positis](http://est.io/) petit?
 `;
 
+const parsePath = (pathName: string) => pathName.split("/")[1];
+
 export const Document: Component = () => {
+  // get filename/id from router
+  const location = useLocation();
+  const docFilename = createMemo(() => parsePath(location.pathname));
+
+  // check local state for document?
+  // check for/fetch document data?
+
   const [markdown, setMarkdown] = createSignal(SOME_MARKDOWN);
 
   const handleKeyup = (event: Event) => {
