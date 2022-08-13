@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@solidjs/router": "^0.4.2",
+    "dropbox": "^10.32.0",
     "markdown-it": "^13.0.1",
     "solid-js": "^1.4.7"
   }
