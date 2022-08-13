@@ -1,11 +1,10 @@
-import { Component } from "solid-js";
+import { Component, createResource } from "solid-js";
+import { getAuthenticationUrl } from "../services/dropbox";
 
 const ConnectDropbox: Component = () => {
-  return (
-    <div>
-      <button>Connect to Dropbox</button>
-    </div>
-  );
+  const [data] = createResource("", getAuthenticationUrl);
+
+  return <div>{data() && <a href={data()}>Connect to Dropbox</a>}</div>;
 };
 
 export default ConnectDropbox;
