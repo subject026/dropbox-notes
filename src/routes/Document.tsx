@@ -71,7 +71,7 @@ export const Document: Component = () => {
 
   const [markdown, setMarkdown] = createSignal(SOME_MARKDOWN);
 
-  const handleKeyup = (event: Event) => {
+  const handleInput = (event: Event) => {
     const { value } = event.currentTarget as HTMLTextAreaElement;
     setMarkdown(value);
   };
@@ -85,7 +85,7 @@ export const Document: Component = () => {
             name="editor"
             id="editor"
             value={markdown()}
-            onKeyUp={handleKeyup}
+            onInput={handleInput}
           ></textarea>
         </section>
         <section innerHTML={md.render(markdown())} class="p-4 rounded prose" />
