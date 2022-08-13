@@ -1,18 +1,18 @@
-import { Component, createEffect, createResource, For, Show } from "solid-js";
+import { Component } from "solid-js";
 
-import { Link } from "@solidjs/router";
 import Layout from "../components/Layout";
-import { fetchDocs } from "../services/dropbox";
 import DocumentIndex from "../components/DocumentIndex";
 import ConnectDropbox from "../components/ConnectDropbox";
+import { parseQueryString } from "../utils";
 
 const Home: Component = () => {
-  // if (!document.cookie) {
-  //   console.log("setting a cookie...");
-  //   document.cookie = "accessToken=woofwoof";
-  // }
+  console.log("document.cookie: ", document.cookie);
 
-  console.log(document.cookie);
+  // TODO need to check cookie called "accessToken" is present
+
+  // TODO: only check for hash if no cookie is present
+  if (window.location.hash)
+    document.cookie = `accessToken=${parseQueryString(window.location.hash)}`;
 
   return (
     <Layout>{document.cookie ? <DocumentIndex /> : <ConnectDropbox />}</Layout>
