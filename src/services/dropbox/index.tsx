@@ -1,7 +1,7 @@
 import { DropboxAuth } from "dropbox";
 
-const CLIENT_ID = "dvj8xsz6d44yqfh";
-const APP_URL = "http://localhost:3000";
+const CLIENT_ID = import.meta.env.VITE_CLIENT_ID;
+const APP_URL = import.meta.env.VITE_APP_URL;
 
 export const fetchDocs = (): Promise<string[]> => {
   return new Promise((resolve, reject) => {
